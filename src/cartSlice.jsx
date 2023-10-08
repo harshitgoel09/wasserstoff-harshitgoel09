@@ -13,7 +13,7 @@ const cartSlice = createSlice({
             const itemToRemove = actions.payload;
             
             const indexToRemove = state.items.findIndex((val)=>{
-                return val.item_id == itemToRemove
+                return val.item_id === itemToRemove
             });
 
             // If an item with the specified ID is found, remove it

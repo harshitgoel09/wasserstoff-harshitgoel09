@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState} from 'react'
 // import cartInfo from './CartContext';
 import Filter from './Filter';
 import ProductAddToCart from './ProductAddToCart';

@@ -10,8 +10,7 @@ import {
     Button,
     Heading,
     Text,
-    useColorModeValue,
-    Center,
+    useColorModeValue
 } from '@chakra-ui/react';
 import { Link } from "react-router-dom";
 
