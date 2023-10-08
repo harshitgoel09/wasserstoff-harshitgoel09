@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useContext, useEffect } from 'react'
+import Header from './components/Header'
+import Body from './components/Body'
+import Signin from './components/Signin';
+import Signup from './components/Signup';
+import ForgetPassword from './components/ForgetPassword';
+import Cart from './components/Cart';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+// import cartInfo from './components/CartContext';
+import { ChakraProvider } from '@chakra-ui/react'
+import Footer from './components/Footer';
+import { Provider } from 'react-redux'
+import AppRedux from './AppRedux';
 
-function App() {
+const App = () => {
+  // const [currentCartCount, setCurrentCartCount] = useState(0);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Provider store={AppRedux}>
+      <ChakraProvider>
+        {/* <cartInfo.Provider value={{ cartCount: currentCartCount, setCurrentCartCount }}> */}
+        <Router>
+          <Header />
+          <Routes>
+            <Route path='/' element={<Body />} />
+            <Route path='/signin' element={<Signin />} />
+            <Route path='/signup' element={<Signup />} />
+            <Route path='/forgetpassword' element={<ForgetPassword />} />
+            <Route path='/cart' element={<Cart />} />
+          </Routes>
+          <Footer />
+        </Router>
+        {/* </cartInfo.Provider> */}
+      </ChakraProvider>
+    </Provider>
+  )
 }
 
-export default App;
+export default App
