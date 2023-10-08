@@ -1,8 +1,7 @@
 import React from 'react'
-import cartInfo from './CartContext'
+// import cartInfo from './CartContext'
 // import { useContext } from 'react'
 import { useSelector } from 'react-redux';
-import CartList from './CartList';
 import ProductAddToCart from './ProductAddToCart'
 import { Text, Box, chakra } from '@chakra-ui/react';
 

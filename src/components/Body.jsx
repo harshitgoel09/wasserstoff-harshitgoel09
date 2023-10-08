@@ -1,9 +1,7 @@
 import React, { useState, useContext } from 'react'
 // import cartInfo from './CartContext';
-import Item from './Item';
 import Filter from './Filter';
 import ProductAddToCart from './ProductAddToCart';
-import Footer from './Footer';
 // import {useDispatch} from 'react-redux';
 // import { addItem, removeItem } from '../cartSlice';
 
