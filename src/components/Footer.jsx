@@ -7,11 +7,11 @@ import {
     useColorModeValue,
     VisuallyHidden,
 } from '@chakra-ui/react';
-
 import { FaInstagram, FaLinkedin, FaGithub } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import '../';
 
+// Handle Social Buttom Styling
 const SocialButton = ({ children, label }) => {
     return (
         <chakra.button
@@ -53,6 +53,8 @@ function Footer() {
                 spacing={4}
                 justify={{ base: 'center', md: 'space-between' }}
                 align={{ base: 'center', md: 'center' }} >
+
+                {/*My Details*/}
                 <Text
                     textAlign={{ base: 'center', md: 'left' }}
                     fontSize={'sm'}
@@ -62,6 +64,7 @@ function Footer() {
                     transition="color 0.3s" >Designed and developed by Harshit Goel </Text>
 
 
+                {/* Added Social Profiles*/}
                 <Stack
                     direction={{ base: 'column', md: 'row' }}
                     spacing={{ base: 4, md: 6 }}>
@@ -75,6 +78,7 @@ function Footer() {
                         <Link to="https://www.instagram.com/harshitgoel_09" target='_blank'><FaInstagram color="white" /></Link>
                     </SocialButton>
                 </Stack>
+
             </Container>
         </Box>
     );

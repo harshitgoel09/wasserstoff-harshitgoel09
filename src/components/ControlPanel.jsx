@@ -10,7 +10,10 @@ import {
     Text,
 } from '@chakra-ui/react';
 
+
 const ControlPanel = (props) => {
+
+    // Selects the 'items' array from the Redux store's 'cartStore' slice using the useSelector hook
     const cartItems = useSelector((store) => store.cartStore.items);
     const dispatch = useDispatch();
 

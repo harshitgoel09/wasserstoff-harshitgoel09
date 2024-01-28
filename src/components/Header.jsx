@@ -8,24 +8,29 @@ const Header = () => {
     const location = useLocation();
     const { isOpen, onOpen, onClose } = useDisclosure();
 
+    // Array of navbar links and text-name
     const links = [
         { to: "/", text: "Home" },
         { to: "/beverages", text: "Products" },
         { to: "/cart", text: "Cart" },
     ];
 
+    //Demostrating the use of Context API: Accessing cartCount from CartContext
     const { cartCount } = useContext(cartInfo);
 
     return (
         <Box boxShadow="base">
             <Flex justify="space-between" alignItems="center" mr={'8%'}>
 
+                {/* Urban Cart: Brand Name and Logo Icon */}
                 <Link to='/' className='text-stone-600 font-bold ml-2 rounded-md shadow-3xl'>
                     <div className='company-logo ml-10 p-5 flex hover:bg-gray-100 '>
                         <FaOpencart className='h-5 w-7 mt-1 shadow-xl rounded-3xl shadow-blue-200/10' />
                         Urban Cart
                     </div>
                 </Link>
+
+                {/* Hamburger navbar button for small screens */}
                 <Button
                     display={{ base: 'block', md: 'none' }}
                     onClick={onOpen}
@@ -35,7 +40,7 @@ const Header = () => {
                 >
                 </Button>
 
-                {/* Show navigation links for medium and larger screens */}
+                {/* Show navbar links and text-name for medium and larger screens */}
                 <ul className="hidden md:flex space-x-8">
                     {links.map((link) => (
                         <li key={link.to}>
@@ -43,13 +48,14 @@ const Header = () => {
                                 to={link.to}
                                 className={`${location.pathname === link.to ? 'blue' : 'black'}  hover:text-blue`}
                             >
+                                {/* Show Cart Count: Demo of Context API Usage */}
                                 {link.text === "Cart" ? `Cart - ${cartCount}`: link.text}
                             </Link>
                         </li>
                     ))}
                 </ul>
-            </Flex>
 
+            </Flex>
 
             {/* Hamburger menu for small screens */}
             <Drawer placement="top" onClose={onClose} isOpen={isOpen}>
@@ -64,6 +70,7 @@ const Header = () => {
                                             className={`${location.pathname === link.to ? 'blue' : 'black'}  hover:text-blue`}
                                             onClick={onClose}
                                         >
+                                            {/* Show Cart Count: Demo of Context API Usage */}
                                             {link.text === "Cart" ? `Cart - ${cartCount}`: link.text}
                                         </Link>
                                     </li>
@@ -73,6 +80,7 @@ const Header = () => {
                     </DrawerContent>
                 </DrawerOverlay>
             </Drawer>
+
         </Box>
     );
 };

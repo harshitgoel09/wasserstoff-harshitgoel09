@@ -21,7 +21,7 @@ const getRandomAnimation = () => {
     return animations[randomIndex];
 };
 
-const Menu = () => {
+const Category = () => {
     const [selectedLink, setSelectedLink] = useState('/beverages');
     const animation = getRandomAnimation();
 
@@ -32,6 +32,7 @@ const Menu = () => {
     return (
         <>
             <Box as="ul" className="flex p-5" listStyleType="none">
+                {/* Loop through data.json and create an <li> element for each category name with enhanced user experience animation. */}
                 {data.map((category) => (
                     <li key={category.category} className="mr-6">
                         <Link
@@ -68,4 +69,4 @@ const Menu = () => {
     );
 };
 
-export default Menu;
+export default Category;

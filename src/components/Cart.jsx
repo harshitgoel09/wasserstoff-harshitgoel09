@@ -7,16 +7,18 @@ import { Text, Box, chakra } from '@chakra-ui/react';
 
 const Cart = () => {
 
+  // Selects the 'items' array from the Redux store's 'cartStore' slice using the useSelector hook
   const cartItems = useSelector((store) => {
     return (
       store.cartStore.items
     )
   });
 
+  // Calculate Total Amount of Cart 
   const cartValue = cartItems.reduce((total, item) => total + item.item_price, 0);
 
+  // Unique Item List
   const uniquelist = Array.from(new Set(cartItems.map(JSON.stringify))).map(JSON.parse);
-
 
 
   return (
@@ -41,6 +43,7 @@ const Cart = () => {
         </Box>)
       }
 
+      {/* Reusable Product Card Component on Cart Page */}
       <ProductAddToCart list={uniquelist} />
 
     </>

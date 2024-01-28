@@ -1,11 +1,13 @@
-import { Button, Flex, Input } from '@chakra-ui/react';
 import React from 'react'
+import { Button, Flex, Input } from '@chakra-ui/react';
 
 
 const Filter = (props) => {
     return (
 
         <Flex className="Filter-container" justify="space-between" mx={"10%"} mt={5}>
+
+            {/* Filter 1.0 */}
             <Button
                 onClick={props.handleButtonFilter}
                 px={{ base: "10px", md: "24px" }}
@@ -22,7 +24,9 @@ const Filter = (props) => {
             >
                 {props.toggle ? "Best Seller" : "Show All"}
             </Button>
+
             <Flex className="mt-1" alignItems="center">
+                {/* Filter 2.0.1 */}
                 <Input
                     type="text"
                     placeholder="Search the item"
@@ -38,8 +42,10 @@ const Filter = (props) => {
                     _focus={{ outline: 'none', ring: '2', ringColor: 'gray.300' }}
                     isDisabled={false} // Set to true if you want it to be disabled
                 />
+
+                {/* Filter 2.0.2 */}
                 <Button
-                    onClick={props.handlefilter}
+                    onClick={props.handleFilter}
 
                     px={"24px"}
                     py={1}
@@ -55,6 +61,7 @@ const Filter = (props) => {
                     Search
                 </Button>
             </Flex>
+            
         </Flex>
 
     )
