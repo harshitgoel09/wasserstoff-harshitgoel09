@@ -1,6 +1,4 @@
 import React from 'react'
-// import cartInfo from './CartContext'
-// import { useContext } from 'react'
 import { useSelector } from 'react-redux';
 import ProductAddToCart from './ProductAddToCart'
 import { Text, Box, chakra } from '@chakra-ui/react';
@@ -8,18 +6,17 @@ import { Text, Box, chakra } from '@chakra-ui/react';
 
 
 const Cart = () => {
-  // const cartDetails = useContext(cartInfo);
+
   const cartItems = useSelector((store) => {
     return (
       store.cartStore.items
     )
   });
 
-  var cartValue = 0;
-  const uniquelist = cartItems.filter((item, index, self) => {
-    cartValue += item.item_price;
-    return self.indexOf(item) === index;
-  })
+  const cartValue = cartItems.reduce((total, item) => total + item.item_price, 0);
+
+  const uniquelist = Array.from(new Set(cartItems.map(JSON.stringify))).map(JSON.parse);
+
 
 
   return (

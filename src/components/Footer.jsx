@@ -38,7 +38,13 @@ function Footer() {
         <Box
             bg={'#121C37'}
             color={useColorModeValue('gray.700', 'gray.200')}
-            shadow={'base'} >
+            shadow={'base'} 
+            position={'absolute'}
+            bottom={0}
+            right={0}
+            left={0}
+            
+            >
             <Container
                 as={Stack}
                 maxW={'6xl'}

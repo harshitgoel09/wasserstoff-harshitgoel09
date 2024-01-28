@@ -1,6 +1,8 @@
 import { Box, Button, Drawer, DrawerBody, DrawerContent, DrawerOverlay, Flex, Icon, useDisclosure } from "@chakra-ui/react";
 import { Link, useLocation } from "react-router-dom";
 import { FaBars, FaOpencart } from "react-icons/fa";
+import cartInfo from './CartContext'
+import { useContext } from 'react'
 
 const Header = () => {
     const location = useLocation();
@@ -8,10 +10,11 @@ const Header = () => {
 
     const links = [
         { to: "/", text: "Home" },
-        { to: "/signin", text: "Sign in" },
+        { to: "/beverages", text: "Products" },
         { to: "/cart", text: "Cart" },
-        { to: "/contact", text: "Contact Us" },
     ];
+
+    const { cartCount } = useContext(cartInfo);
 
     return (
         <Box boxShadow="base">
@@ -30,8 +33,8 @@ const Header = () => {
                     size="sm"
                     leftIcon={<Icon as={FaBars} />}
                 >
-
                 </Button>
+
                 {/* Show navigation links for medium and larger screens */}
                 <ul className="hidden md:flex space-x-8">
                     {links.map((link) => (
@@ -40,12 +43,14 @@ const Header = () => {
                                 to={link.to}
                                 className={`${location.pathname === link.to ? 'blue' : 'black'}  hover:text-blue`}
                             >
-                                {link.text}
+                                {link.text === "Cart" ? `Cart - ${cartCount}`: link.text}
                             </Link>
                         </li>
                     ))}
                 </ul>
             </Flex>
+
+
             {/* Hamburger menu for small screens */}
             <Drawer placement="top" onClose={onClose} isOpen={isOpen}>
                 <DrawerOverlay>
@@ -59,7 +64,7 @@ const Header = () => {
                                             className={`${location.pathname === link.to ? 'blue' : 'black'}  hover:text-blue`}
                                             onClick={onClose}
                                         >
-                                            {link.text}
+                                            {link.text === "Cart" ? `Cart - ${cartCount}`: link.text}
                                         </Link>
                                     </li>
                                 ))}
