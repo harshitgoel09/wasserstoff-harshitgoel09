@@ -14,13 +14,11 @@ const App = () => {
   const [currentCartCount, setCurrentCartCount] = useState(0);
 
   const storedItems = localStorage.getItem('cartItems');
-  const parsedItems = storedItems ? JSON.parse(storedItems) : [];
 
   useEffect(() => {
-    if (storedItems) {
-      setCurrentCartCount(parsedItems.length);
-    }
-  }, [parsedItems]);
+    const parsedItems = storedItems ? JSON.parse(storedItems) : [];
+    setCurrentCartCount(parsedItems.length);
+  }, [storedItems]);
 
   return (
     <Provider store={AppRedux}>
